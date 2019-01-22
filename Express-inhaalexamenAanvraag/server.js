@@ -31,18 +31,12 @@ app.get('/add', (req, res) => {
 
 //aanvraag indienen
 app.post('/add', (req, res) => {
-    if(typeof db.collection('inhaal').find({naam: req.body.name, examen: req.body.exam, reden: req.body.reason}) == 'undefined'){
-        console.log('gevonden')
-        console.log(req.body.name)
-        res.redirect('/')
-    }
-    else{
-        console.log('niet in db')
-        db.collection('inhaal').insertOne({naam: req.body.name, examen: req.body.exam, reden: req.body.reason, datum: new Date()}, (err, result) => {
-            if(err) return console.log(err)
-            res.redirect('/')
-        })
-    }
+    // db.collection('inhaal').insertOne({naam: req.body.name, examen: req.body.exam, reden: req.body.reason, datum: new Date()}, (err, result) => {
+    //     if(err) return console.log(err)
+    //     res.redirect('/')
+    // })
+
+    
 })
 
 
@@ -69,7 +63,8 @@ app.post('/search', (req, res) => {
             res.render('search_not_found.ejs', {})
         else
             console.log(result)
-            res.render('search_result.ejs', {aanvragen: result})
+
+            res.render('search_result.ejs', {aanvragen: result.sort((a,b) => {return a.reden < b.reden ? -1 : 1 })})
     })
 })
 
