@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Nieuw recept:</h2>
+
+    <form (ngSubmit)='onSubmit()'>
+
+        <div class = 'form-group' [formGroup]='recept'>
+            <label>Naam :</label>&nbsp;&nbsp;
+            <input type = 'text' formControlName='receptnaam'>
+            <br/>
+            <label>KCal :</label>&nbsp;&nbsp;
+            <input type = 'text' formControlName='receptkcal'>
+            <br/>
+            <label>Ingredienten :</label>&nbsp;&nbsp;
+            <input type = 'text' formControlName='receptingredienten'>
+            <br/>
+            <label>Bereidingstijd :</label>&nbsp;&nbsp;
+            <input type = 'text' formControlName='receptbereidingstijd'>
+        </div>
+        <br />
+        <button type='submit' class='btn btn-success'>Voeg recept toe</button>
+
+    </form>
+
+    <h2>Alle recepten:</h2>
+    <div *ngFor="let recept of recepten">
+        <label>Naam: </label> {{ recept.naam }}<br />
+        <label>Kcal: </label>{{ recept.kcal }}<br />
+        <label>Ingredienten: </label>
+        <ul *ngFor="let ingredient of recept.ingredienten">
+            <li>{{ingredient}}</li>
+        </ul>
+        <br />
+        <label>Bereidingstijd: </label>{{ recept.bereidingstijd }}<br />
+        <br/>
+    </div>
+</div>
