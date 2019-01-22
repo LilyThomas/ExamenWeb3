@@ -31,23 +31,11 @@ app.get('/add', (req, res) => {
 
 //aanvraag indienen
 app.post('/add', (req, res) => {
-    // db.collection('inhaal').insertOne({naam: req.body.name, examen: req.body.exam, reden: req.body.reason, datum: new Date()}, (err, result) => {
-    //     if(err) return console.log(err)
-    //     res.redirect('/')
-    // })
-
-    
+    db.collection('inhaal').insertOne({naam: req.body.name, examen: req.body.exam, reden: req.body.reason, datum: new Date()}, (err, result) => {
+        if(err) return console.log(err)
+        res.redirect('/')
+    })
 })
-
-
-
-//List all products => startpage
-// app.get('/list', (req, res) => {
-//     db.collection('products').find().toArray((err, result) => {
-//         if (err) return console.log(err)
-//         res.render('list.ejs', {products: result})
-//     })
-// })
 
 //show search form => render search form
 app.get('/search', (req, res) => {
@@ -67,11 +55,3 @@ app.post('/search', (req, res) => {
             res.render('search_result.ejs', {aanvragen: result.sort((a,b) => {return a.reden < b.reden ? -1 : 1 })})
     })
 })
-
-// //delete a product
-// app.post('/delete', (req, res) => {
-//     db.collection('products').findOneAndDelete({name: req.body.name}, (err, result) => {
-//         if(err) return res.send(500, err)
-//         res.redirect('/list')
-//     })
-// })
