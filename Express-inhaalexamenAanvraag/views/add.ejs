@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Aanvraag</title>
+</head>
+<body>
+<div class='well'>
+  <h2>Aanvraag indienen</h2>
+  <br/><br/>
+  <form action='/add' method='POST'>
+   <table>
+     <tr><td>Naam : </td><td><input type='text' name='name'></td></tr>
+     <tr><td>Examen : </td><td><input type='text' name='exam'></td></tr>
+     <tr><td>Reden : </td><td><input type='text' name='reason'></td></tr>
+     <tr><td><button type='submit'>Indienen</button></td></tr>
+   </table>
+  </form>
+
+    <a href="/search">Zoek student</a>
+</div>
+</body>
+</html>
