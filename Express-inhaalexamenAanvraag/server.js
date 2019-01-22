@@ -31,16 +31,16 @@ app.get('/add', (req, res) => {
 
 //aanvraag indienen
 app.post('/add', (req, res) => {
-    if(db.collection('inhaal').find({naam: req.body.name, examen: req.body.exam, reden: req.body.reason})){
+    if(typeof db.collection('inhaal').find({naam: req.body.name, examen: req.body.exam, reden: req.body.reason}) == 'undefined'){
         console.log('gevonden')
         console.log(req.body.name)
-        res.redirect('list')
+        res.redirect('/')
     }
     else{
         console.log('niet in db')
         db.collection('inhaal').insertOne({naam: req.body.name, examen: req.body.exam, reden: req.body.reason, datum: new Date()}, (err, result) => {
             if(err) return console.log(err)
-            res.redirect('list')
+            res.redirect('/')
         })
     }
 })
@@ -68,6 +68,7 @@ app.post('/search', (req, res) => {
         if(result == '')
             res.render('search_not_found.ejs', {})
         else
+            console.log(result)
             res.render('search_result.ejs', {aanvragen: result})
     })
 })

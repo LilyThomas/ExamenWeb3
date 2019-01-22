@@ -7,16 +7,15 @@
 <body>
   <h2>Result</h2>
   <br/><br/>
+  <% for(var i = 0 ; i < aanvragen.length; i++){%>
   <p class='product'>
-   <span><b>Name : </b><%= product.name %></span><br/>
-   <span><b>Description : </b><%= product.description %></span><br/>
-   <span><b>Price : </b><%= product.price %></span><br/>
-  </p>
 
-  <!--<form action='/delete' method='POST'>-->
-    <!--<span><input type='hidden' name='name' value='<%=product.name%>'></span>-->
-    <!--<span><button type='submit'>Delete</button></span>-->
-  <!--</form>-->
+   <span><b>Name : </b><%= aanvragen[i].naam %></span><br/>
+   <span><b>Description : </b><%= aanvragen[i].examen %></span><br/>
+   <span><b>Price : </b><%= aanvragen[i].reden %></span><br/>
+  </p>
+  <%}%>
+
 
 </body>
 </html>
